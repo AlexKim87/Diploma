@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Формуляр на контроллер</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+ 	<link href="{% static "myapp/css/bootstrap.min.css" %}" rel="stylesheet"/>
+    <link href="{% static "myapp/css/style.css" %}" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <div class="container-fluid">
+
+	<div class="row">
+		<div class="col-md-12">
+			<h3>
+				Система учета контроллеров присоединения
+			</h3>
+		</div>
+	</div>
+
+		<div class="row">
+
+
+			<div class="col-md-3">
+
+				<a href="{% url "modules_list" %}">Модули</a>
+
+			</div>
+
+
+			<div class="col-md-3">
+
+				<a href="{% url "controllers_list" %}">Контроллеры</a>
+			</div>
+
+
+
+			<div class="col-md-3">
+				<div class="dropdown">
+
+					<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+						Заполнение шаблонов
+					</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						 <a class="dropdown-item" href="{% url "controller_form_filling" %}">Формуляр на контроллер</a> <a class="dropdown-item" href="{% url "module_passport_filling" %}">Паспорт на модуль</a> <a class="dropdown-item" href="{% url "project_forms_filling" %}">Весь проект</a>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div class="col-md-3">
+				<div class="dropdown">
+
+					<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+						Поиск
+					</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						 <a class="dropdown-item" href="{% url "module_search" %}">Поиск модуля</a> <a class="dropdown-item" href="{% url "controller_search" %}">Поиск контроллера</a>
+					</div>
+				</div>
+			</div>
+
+	</div>
+
+
+	<div class="row">
+		<div class="col-md-12">
+			<h3>
+				Заполнение шаблонов формуляра и паспортов
+			</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="dropdown">
+				 
+				<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+					Выберите тип контроллера
+				</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					{% for type in controller_types %}
+					 <a class="dropdown-item disabled" href="#">{{type}}</a>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<form role="form">
+				<div class="form-group">
+					 
+					<label for="exampleInputEmail1">
+						Введите заводской номер контроллера
+					</label>
+					<input type="email" class="form-control" id="exampleInputEmail1">
+				</div>
+				<div class="form-group">
+					 
+					
+				<button type="submit" class="btn btn-primary">
+					Заполнить формуляр и паспорта
+				</button>
+			</form>
+		</div>
+		<div class="col-md-4">
+			 
+			
+		</div>
+	</div>
+</div>
+
+	<script src="{% static "myapp/js/jquery.min.js" %}"></script>
+    <script src="{% static "myapp/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "myapp/js/scripts.js" %}"></script>
+	<script src="{% static "myapp/js/livetable.js" %}"></script>
+
+  </body>
+</html>

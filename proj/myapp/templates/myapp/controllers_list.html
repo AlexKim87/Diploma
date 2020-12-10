@@ -1,0 +1,342 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Список контроллеров</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="{% static "myapp/css/bootstrap.min.css" %}" rel="stylesheet"/>
+    <link href="{% static "myapp/css/style.css" %}" rel="stylesheet">
+
+
+
+  </head>
+  <body>
+
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h3>
+				Система учета контроллеров присоединения
+			</h3>
+		</div>
+	</div>
+
+
+	<div class="row">
+
+
+		<div class="col-md-3">
+
+			<a href="{% url "modules_list" %}">Модули</a>
+
+		</div>
+
+
+		<div class="col-md-3">
+
+			<a href="{% url "controllers_list" %}">Контроллеры</a>
+		</div>
+
+
+
+		<div class="col-md-3">
+			<div class="dropdown">
+				 
+				<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+					Заполнение шаблонов
+				</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					 <a class="dropdown-item" href="{% url "controller_form_filling" %}">Формуляр на контроллер</a> <a class="dropdown-item" href="{% url "module_passport_filling" %}">Паспорт на модуль</a> <a class="dropdown-item" href="{% url "project_forms_filling" %}">Весь проект</a>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="col-md-3">
+			<div class="dropdown">
+				 
+				<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+					Поиск
+				</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					 <a class="dropdown-item" href="{% url "module_search" %}">Поиск модуля</a> <a class="dropdown-item" href="{% url "controller_search" %}">Поиск контроллера</a>
+				</div>
+			</div>
+		</div>
+
+
+
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-md-12">
+			<h3>
+				Вывод списка контроллеров:
+			</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="dropdown">
+				 
+				<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+					Выберите тип контроллера
+				</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					 <!--<a class="dropdown-item" href="#">M4</a> <a class="dropdown-item" href="#">M5</a> <a class="dropdown-item" href="#">M7</a> <a class="dropdown-item" href="#">RTU</a> <a class="dropdown-item" href="#">BAY</a> <a class="dropdown-item" href="#">Compact</a>-->
+					{% for type in controller_types %}
+					<a class="dropdown-item" href="#">{{type}}</a>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<div class="dropdown">
+
+				<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+					Выберите год
+				</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					 <!--<a class="dropdown-item" href="#">M4</a> <a class="dropdown-item" href="#">M5</a> <a class="dropdown-item" href="#">M7</a> <a class="dropdown-item" href="#">RTU</a> <a class="dropdown-item" href="#">BAY</a> <a class="dropdown-item" href="#">Compact</a>-->
+					{% for date in qc_dates %}
+					<a class="dropdown-item" href="#">{{date}}</a>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+
+		<div class="col-md-4">
+			<div class="dropdown">
+
+				<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+					Выберите проект
+				</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					 <!--<a class="dropdown-item" href="#">M4</a> <a class="dropdown-item" href="#">M5</a> <a class="dropdown-item" href="#">M7</a> <a class="dropdown-item" href="#">RTU</a> <a class="dropdown-item" href="#">BAY</a> <a class="dropdown-item" href="#">Compact</a>-->
+					{% for name in project_names %}
+					<a class="dropdown-item" href="#">{{name}}</a>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		
+			 
+			
+		</div>
+	</div>
+</div>
+<div class="row">
+		<div class="col-md-12">
+			<table class="table" id="bagua-table">
+				<thead>
+					<tr>
+						<th>
+							Тип контроллера
+						</th>
+						<th>
+							№ Заявки на изготовление
+						</th>
+						<th>
+							Заводской номер контроллера
+						</th>
+						<th>
+							Слот 1
+						</th>
+						<th>
+							Слот 2
+						</th>
+						<th>
+							Слот 3
+						</th>
+						<th>
+							Слот 4
+						</th>
+						<th>
+							Слот 5
+						</th>
+						<th>
+							Слот 6
+						</th>
+						<th>
+							Слот 7
+						</th>
+						<th>
+							Слот 8
+						</th>
+						<th>
+							Слот 9
+						</th>
+						<th>
+							Слот 10
+						</th>
+						<th>
+							Слот 11
+						</th>
+												<th>
+							Слот 12
+						</th>
+												<th>
+							Слот 13
+						</th>
+												<th>
+							Слот 14
+						</th>
+												<th>
+							Модуль лицевой панели
+						</th>
+												<th>
+							Дата производства контроллера
+						</th>
+												<th>
+							Дата ОТК
+						</th>
+												<th>
+							Госповерка
+						</th>
+												<th>
+							Название проекта
+						</th>
+												<th>
+							ФИО Руководителя проекта
+						</th>
+					</tr>
+				</thead>
+
+				<tbody>
+
+					{% for controller in controllers %}
+					<tr>
+						<td>
+							{{controller.controller.controller_type}}
+						</td>
+						<td>
+							{{controller.controller.manufacturing_request_number}}
+						</td>
+						<td>
+							{{controller.controller}}
+						</td>
+
+
+						{% for slot in controller.slot %}
+						{%if slot%}
+						<td>
+							{{slot.controller_module.module}}
+						</td>
+						{% else %}
+						<td>
+							{{"Пустой слот"}}
+						</td>
+						{% endif %}
+						{% endfor %}
+
+
+						<!--<td>-->
+							<!--{{controller.controller.another_equipment_numbers}}-->
+						<!--</td>-->
+						{% if controller.controller.another_equipment_numbers %}
+						<td>
+							{{controller.controller.another_equipment_numbers}}
+						</td>
+						{% else %}
+						<td>
+							{{"--"}}
+						</td>
+						{% endif %}
+
+						<!--<td>-->
+							<!--{{controller.controller.controller_production_date}}-->
+						<!--</td>-->
+						{% if controller.controller.controller_production_date %}
+						<td>
+							{{controller.controller.controller_production_date}}
+						</td>
+						{% else %}
+						<td>
+							{{"--"}}
+						</td>
+						{% endif %}
+						<!--<td>-->
+							<!--{{controller.controller.qc_date}}-->
+						<!--</td>-->
+						{% if controller.controller.qc_date %}
+						<td>
+							{{controller.controller.qc_date}}
+						</td>
+						{% else %}
+						<td>
+							{{"--"}}
+						</td>
+						{% endif %}
+						<!--<td>-->
+							<!--{{controller.controller.metrology_check}}-->
+						<!--</td>-->
+						{% if controller.controller.metrology_check %}
+						<td>
+							{{'Проведена'}}
+						</td>
+						{% else %}
+						<td>
+							{{"--"}}
+						</td>
+						{% endif %}
+						<!--<td>-->
+							<!--{{controller.controller.project_name}}-->
+						<!--</td>-->
+						{% if controller.controller.project_name %}
+						<td>
+							{{controller.controller.project_name}}
+						</td>
+						{% else %}
+						<td>
+							{{"--"}}
+						</td>
+						{% endif %}
+						<!--<td>-->
+							<!--{{controller.controller.project_manager_name}}-->
+						<!--</td>-->
+						{% if controller.controller.project_manager_name %}
+						<td>
+							{{controller.controller.project_manager_name}}
+						</td>
+						{% else %}
+						<td>
+							{{"--"}}
+						</td>
+						{% endif %}
+					</tr>
+					{% endfor %}
+
+					{% for i in a %}
+
+
+						<td>
+							{{i}}
+						</td>
+
+
+					{% endfor %}
+
+
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+    <script src="{% static "myapp/js/jquery.min.js" %}"></script>
+    <script src="{% static "myapp/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "myapp/js/scripts.js" %}"></script>
+	<script src="{% static "myapp/js/livetable.js" %}"></script>
+  </body>
+</html>

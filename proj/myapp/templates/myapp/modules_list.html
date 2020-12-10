@@ -1,0 +1,282 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Список модулей</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="{% static "myapp/css/bootstrap.min.css" %}" rel="stylesheet"/>
+    <link href="{% static "myapp/css/style.css" %}" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h3>
+				Система учета контроллеров присоединения
+			</h3>
+		</div>
+	</div>
+
+		<div class="row">
+
+
+		<div class="col-md-3">
+
+			<a href="{% url "modules_list" %}">Модули</a>
+
+		</div>
+
+
+		<div class="col-md-3">
+
+			<a href="{% url "controllers_list" %}">Контроллеры</a>
+		</div>
+
+
+
+		<div class="col-md-3">
+			<div class="dropdown">
+
+				<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+					Заполнение шаблонов
+				</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					 <a class="dropdown-item" href="{% url "controller_form_filling" %}">Формуляр на контроллер</a> <a class="dropdown-item" href="{% url "module_passport_filling" %}">Паспорт на модуль</a> <a class="dropdown-item" href="{% url "project_forms_filling" %}">Весь проект</a>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="col-md-3">
+			<div class="dropdown">
+
+				<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+					Поиск
+				</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					 <a class="dropdown-item" href="{% url "module_search" %}">Поиск модуля</a> <a class="dropdown-item" href="{% url "controller_search" %}">Поиск контроллера</a>
+				</div>
+			</div>
+		</div>
+
+
+
+	</div>
+
+	<hr>
+	<div class="row">
+		<div class="col-md-12">
+			<h3>
+				Вывод списка модулей:
+			</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="dropdown">
+				 
+				<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+					Выберите тип модуля
+				</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					{% for name in original_module_names %}
+					<a class="dropdown-item" href="#">{{name}}</a>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<div class="dropdown">
+
+				<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+					Выберите год
+				</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					{% for year in original_production_years %}
+					<a class="dropdown-item" href="#">{{year}}</a>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		
+			 
+			
+		</div>
+
+</div>
+
+<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							Заводской номер модуля
+						</th>
+						<th>
+							Ревизия
+						</th>
+						<th>
+							Наименование модуля
+						</th>
+						<th>
+							Номер партии
+						</th>
+						<th>
+							Фирма-производитель
+						</th>
+						<th>
+							Дата производства модуля
+						</th>
+						<th>
+							Дата ОТК
+						</th>
+						<th>
+							Hash-сумма прошивки
+						</th>
+						<th>
+							ФИО инженера
+						</th>
+						<th>
+							Примечание
+						</th>
+						<th>
+							№ Контроллера
+						</th>
+						<th>
+							Проект
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for mod_cont in modules_controllers %}
+					<tr>
+
+						<td>
+							{{mod_cont.module.factory_number}}
+						</td>
+                        {% if mod_cont.module.revision %}
+						<td>
+							{{mod_cont.module.revision}}
+						</td>
+                        {% else %}
+                        <td>
+                            {{'--'}}
+                        </td>
+                        {% endif %}
+                        {% if mod_cont.module.module_name %}
+						<td>
+							{{mod_cont.module.module_name}}
+						</td>
+                        {% else %}
+                        <td>
+                            {{'--'}}
+                        </td>
+                        {% endif %}
+                        {% if mod_cont.module.consignment_number %}
+						<td>
+							{{mod_cont.module.consignment_number}}
+						</td>
+                        {% else %}
+                        <td>
+                            {{'--'}}
+                        </td>
+                        {% endif %}
+                        {% if mod_cont.module.manufacturer %}
+						<td>
+							{{mod_cont.module.manufacturer}}
+						</td>
+                        {% else %}
+                        <td>
+                            {{'--'}}
+                        </td>
+                        {% endif %}
+                        {% if mod_cont.module.production_date %}
+						<td>
+							{{mod_cont.module.production_date}}
+						</td>
+                        {% else %}
+                        <td>
+                            {{'--'}}
+                        </td>
+                        {% endif %}
+                        {% if mod_cont.module.qc_pass_date %}
+						<td>
+							{{mod_cont.module.qc_pass_date}}
+						</td>
+                        {% else %}
+                        <td>
+                            {{'--'}}
+                        </td>
+                        {% endif %}
+                        {% if mod_cont.module.hash %}
+						<td>
+							{{mod_cont.module.hash}}
+						</td>
+                        {% else %}
+                        <td>
+                            {{'--'}}
+                        </td>
+                        {% endif %}
+                        {% if mod_cont.module.engineer_name %}
+						<td>
+							{{mod_cont.module.engineer_name}}
+						</td>
+                        {% else %}
+                        <td>
+                            {{'--'}}
+                        </td>
+                        {% endif %}
+                        {% if mod_cont.module.note %}
+						<td>
+							{{mod_cont.module.note}}
+						</td>
+                        {% else %}
+                        <td>
+                            {{'--'}}
+                        </td>
+                        {% endif %}
+                        {% if mod_cont.controller.factory_number %}
+						<td>
+							{{mod_cont.controller.factory_number}}
+						</td>
+                        {% else %}
+                        <td>
+							{{'--'}}
+						</td>
+                        {% endif %}
+                        {% if mod_cont.controller.project_name %}
+						<td>
+							{{mod_cont.controller.project_name}}
+						</td>
+                        {% else %}
+                        <td>
+							{{'--'}}
+						</td>
+                        {% endif %}
+
+					</tr>
+					{% endfor%}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+    <script src="{% static "myapp/js/jquery.min.js" %}"></script>
+    <script src="{% static "myapp/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "myapp/js/scripts.js" %}"></script>
+	<script src="{% static "myapp/js/livetable.js" %}"></script>
+  </body>
+</html>
